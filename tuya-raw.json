@@ -1,0 +1,372 @@
+{
+    "result": [
+        {
+            "active_time": 1666369853,
+            "biz_type": 0,
+            "category": "dj",
+            "create_time": 1633177685,
+            "icon": "smart/icon/ay1541056239985fDGjj/f84e2c8edb72154aa7f62ae3d9cf7b1a.png",
+            "id": "bf1b45b6f29f5bd4d1t4tg",
+            "ip": "77.168.169.48",
+            "lat": "52.0652",
+            "local_key": "1749cb5be5a5ae46",
+            "lon": "4.2399",
+            "model": "mennew",
+            "name": "Spot2",
+            "online": true,
+            "owner_id": "38625592",
+            "product_id": "uwc1evbcqurkifog",
+            "product_name": "LSC GU10-Glass-RGBCW",
+            "status": [
+                {
+                    "code": "switch_led",
+                    "value": false
+                },
+                {
+                    "code": "work_mode",
+                    "value": "colour"
+                },
+                {
+                    "code": "bright_value_v2",
+                    "value": 10
+                },
+                {
+                    "code": "temp_value_v2",
+                    "value": 237
+                },
+                {
+                    "code": "colour_data_v2",
+                    "value": "{\"h\":6,\"s\":1000,\"v\":306}"
+                },
+                {
+                    "code": "scene_data_v2",
+                    "value": "{\"scene_num\":8,\"scene_units\":[{\"bright\":0,\"h\":0,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000},{\"bright\":0,\"h\":120,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000},{\"bright\":0,\"h\":240,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000},{\"bright\":0,\"h\":61,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000},{\"bright\":0,\"h\":174,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000},{\"bright\":0,\"h\":275,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000}]}"
+                },
+                {
+                    "code": "countdown_1",
+                    "value": 0
+                },
+                {
+                    "code": "control_data",
+                    "value": ""
+                },
+                {
+                    "code": "rhythm_mode",
+                    "value": "AAAAAAA="
+                },
+                {
+                    "code": "sleep_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "wakeup_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "remote_switch",
+                    "value": true
+                }
+            ],
+            "sub": false,
+            "time_zone": "+02:00",
+            "uid": "eu1633260052734SbMH5",
+            "update_time": 1666639915,
+            "uuid": "fa4417bf9f637fc1"
+        },
+        {
+            "active_time": 1666369866,
+            "biz_type": 0,
+            "category": "dj",
+            "create_time": 1657705389,
+            "icon": "smart/icon/ay1541056239985fDGjj/f84e2c8edb72154aa7f62ae3d9cf7b1a.png",
+            "id": "bfc03b993301f4a1d2pxje",
+            "ip": "77.168.169.48",
+            "lat": "52.0652",
+            "local_key": "ae0e0692ed4635fc",
+            "lon": "4.2399",
+            "model": "mennew",
+            "name": "Spot3",
+            "online": true,
+            "owner_id": "38625592",
+            "product_id": "uwc1evbcqurkifog",
+            "product_name": "LSC GU10-Glass-RGBCW",
+            "status": [
+                {
+                    "code": "switch_led",
+                    "value": false
+                },
+                {
+                    "code": "work_mode",
+                    "value": "colour"
+                },
+                {
+                    "code": "bright_value_v2",
+                    "value": 10
+                },
+                {
+                    "code": "temp_value_v2",
+                    "value": 237
+                },
+                {
+                    "code": "colour_data_v2",
+                    "value": "{\"h\":6,\"s\":1000,\"v\":306}"
+                },
+                {
+                    "code": "scene_data_v2",
+                    "value": "{\"scene_num\":8,\"scene_units\":[{\"bright\":0,\"h\":0,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000},{\"bright\":0,\"h\":120,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000},{\"bright\":0,\"h\":240,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000},{\"bright\":0,\"h\":61,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000},{\"bright\":0,\"h\":174,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000},{\"bright\":0,\"h\":275,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000}]}"
+                },
+                {
+                    "code": "countdown_1",
+                    "value": 0
+                },
+                {
+                    "code": "control_data",
+                    "value": ""
+                },
+                {
+                    "code": "rhythm_mode",
+                    "value": "AAAAAAA="
+                },
+                {
+                    "code": "sleep_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "wakeup_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "remote_switch",
+                    "value": true
+                }
+            ],
+            "sub": false,
+            "time_zone": "+02:00",
+            "uid": "eu1633260052734SbMH5",
+            "update_time": 1666639903,
+            "uuid": "ac51ff38246f8d1f"
+        },
+        {
+            "active_time": 1666369884,
+            "biz_type": 0,
+            "category": "dj",
+            "create_time": 1657705373,
+            "icon": "smart/icon/ay1541056239985fDGjj/f84e2c8edb72154aa7f62ae3d9cf7b1a.png",
+            "id": "bf26704e6b7bf91f5brgjf",
+            "ip": "77.168.169.48",
+            "lat": "52.0652",
+            "local_key": "e589342193d4c6fc",
+            "lon": "4.2399",
+            "model": "mennew",
+            "name": "Spot1",
+            "online": true,
+            "owner_id": "38625592",
+            "product_id": "uwc1evbcqurkifog",
+            "product_name": "LSC GU10-Glass-RGBCW",
+            "status": [
+                {
+                    "code": "switch_led",
+                    "value": false
+                },
+                {
+                    "code": "work_mode",
+                    "value": "white"
+                },
+                {
+                    "code": "bright_value_v2",
+                    "value": 1000
+                },
+                {
+                    "code": "temp_value_v2",
+                    "value": 237
+                },
+                {
+                    "code": "colour_data_v2",
+                    "value": "{\"h\":31,\"s\":1000,\"v\":806}"
+                },
+                {
+                    "code": "scene_data_v2",
+                    "value": "{\"scene_num\":8,\"scene_units\":[{\"bright\":0,\"h\":0,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000},{\"bright\":0,\"h\":120,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000},{\"bright\":0,\"h\":240,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000},{\"bright\":0,\"h\":61,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000},{\"bright\":0,\"h\":174,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000},{\"bright\":0,\"h\":275,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000}]}"
+                },
+                {
+                    "code": "countdown_1",
+                    "value": 0
+                },
+                {
+                    "code": "control_data",
+                    "value": ""
+                },
+                {
+                    "code": "rhythm_mode",
+                    "value": "AAAAAAA="
+                },
+                {
+                    "code": "sleep_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "wakeup_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "remote_switch",
+                    "value": true
+                }
+            ],
+            "sub": false,
+            "time_zone": "+02:00",
+            "uid": "eu1633260052734SbMH5",
+            "update_time": 1666639882,
+            "uuid": "6fd50364c6a4ee32"
+        },
+        {
+            "active_time": 1662748274,
+            "biz_type": 0,
+            "category": "dj",
+            "create_time": 1633440708,
+            "icon": "smart/icon/ay1513094230318rZgE5/6136151663893a8fd41aac170668fa0d.png",
+            "id": "bfd111cb86bdaa06121ni6",
+            "ip": "77.168.169.48",
+            "lat": "52.0654",
+            "local_key": "c168a6a50bb19041",
+            "lon": "4.2392",
+            "model": "manew",
+            "name": "Bed",
+            "online": false,
+            "owner_id": "38625592",
+            "product_id": "gkuracrq5biwualf",
+            "product_name": "A60 RGB-CCT ",
+            "status": [
+                {
+                    "code": "switch_led",
+                    "value": false
+                },
+                {
+                    "code": "work_mode",
+                    "value": "white"
+                },
+                {
+                    "code": "bright_value_v2",
+                    "value": 395
+                },
+                {
+                    "code": "temp_value_v2",
+                    "value": 0
+                },
+                {
+                    "code": "colour_data_v2",
+                    "value": "{\"h\":0,\"s\":1000,\"v\":1000}"
+                },
+                {
+                    "code": "scene_data_v2",
+                    "value": "{\"scene_num\":8,\"scene_units\":[{\"bright\":0,\"h\":0,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000},{\"bright\":0,\"h\":120,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000},{\"bright\":0,\"h\":240,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000},{\"bright\":0,\"h\":61,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000},{\"bright\":0,\"h\":174,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000},{\"bright\":0,\"h\":275,\"s\":1000,\"temperature\":0,\"unit_change_mode\":\"gradient\",\"unit_gradient_duration\":70,\"unit_switch_duration\":70,\"v\":1000}]}"
+                },
+                {
+                    "code": "countdown_1",
+                    "value": 0
+                },
+                {
+                    "code": "control_data",
+                    "value": ""
+                },
+                {
+                    "code": "rhythm_mode",
+                    "value": "AAAAAAA="
+                },
+                {
+                    "code": "sleep_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "wakeup_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "remote_switch",
+                    "value": true
+                }
+            ],
+            "sub": false,
+            "time_zone": "+02:00",
+            "uid": "eu1633260052734SbMH5",
+            "update_time": 1662754351,
+            "uuid": "679c8593578f8d5c"
+        },
+        {
+            "active_time": 1658816970,
+            "biz_type": 0,
+            "category": "dj",
+            "create_time": 1633177483,
+            "icon": "smart/icon/ay1513094230318rZgE5/6136151663893a8fd41aac170668fa0d.png",
+            "id": "bf9d6b7398db79bfcd8atz",
+            "ip": "82.75.74.29",
+            "lat": "51.5817",
+            "local_key": "43179a68169ee53c",
+            "lon": "4.7647",
+            "model": "manew",
+            "name": "Aquarium",
+            "online": true,
+            "owner_id": "38625592",
+            "product_id": "gkuracrq5biwualf",
+            "product_name": "A60 RGB-CCT ",
+            "status": [
+                {
+                    "code": "switch_led",
+                    "value": false
+                },
+                {
+                    "code": "work_mode",
+                    "value": "white"
+                },
+                {
+                    "code": "bright_value_v2",
+                    "value": 1000
+                },
+                {
+                    "code": "temp_value_v2",
+                    "value": 1000
+                },
+                {
+                    "code": "colour_data_v2",
+                    "value": "{\"h\":0,\"s\":1000,\"v\":1000}"
+                },
+                {
+                    "code": "scene_data_v2",
+                    "value": "{\"scene_num\":1,\"scene_units\":[{\"bright\":200,\"h\":0,\"s\":0,\"temperature\":0,\"unit_change_mode\":\"static\",\"unit_gradient_duration\":13,\"unit_switch_duration\":14,\"v\":0}]}"
+                },
+                {
+                    "code": "countdown_1",
+                    "value": 0
+                },
+                {
+                    "code": "control_data",
+                    "value": ""
+                },
+                {
+                    "code": "rhythm_mode",
+                    "value": "AAAAAAA="
+                },
+                {
+                    "code": "sleep_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "wakeup_mode",
+                    "value": "AAA="
+                },
+                {
+                    "code": "remote_switch",
+                    "value": true
+                }
+            ],
+            "sub": false,
+            "time_zone": "+02:00",
+            "uid": "eu1633260052734SbMH5",
+            "update_time": 1658816988,
+            "uuid": "c1e87f1ae9feb725"
+        }
+    ],
+    "success": true,
+    "t": 1666640806610,
+    "tid": "97e6aa1e53d411edb8bcca0f69d78a9e"
+}

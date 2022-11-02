@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Spot2",
+        "id": "bf1b45b6f29f5bd4d1t4tg",
+        "key": "1749cb5be5a5ae46",
+        "mac": "84:e3:42:34:bc:60",
+        "category": "dj",
+        "product_name": "LSC GU10-Glass-RGBCW",
+        "product_id": "uwc1evbcqurkifog",
+        "biz_type": 0,
+        "model": "mennew",
+        "sub": false,
+        "icon": "https://images.tuyaeu.com/smart/icon/ay1541056239985fDGjj/f84e2c8edb72154aa7f62ae3d9cf7b1a.png"
+    },
+    {
+        "name": "Spot3",
+        "id": "bfc03b993301f4a1d2pxje",
+        "key": "ae0e0692ed4635fc",
+        "mac": "70:89:76:8e:99:2c",
+        "category": "dj",
+        "product_name": "LSC GU10-Glass-RGBCW",
+        "product_id": "uwc1evbcqurkifog",
+        "biz_type": 0,
+        "model": "mennew",
+        "sub": false,
+        "icon": "https://images.tuyaeu.com/smart/icon/ay1541056239985fDGjj/f84e2c8edb72154aa7f62ae3d9cf7b1a.png"
+    },
+    {
+        "name": "Spot1",
+        "id": "bf26704e6b7bf91f5brgjf",
+        "key": "e589342193d4c6fc",
+        "mac": "84:e3:42:e9:35:db",
+        "category": "dj",
+        "product_name": "LSC GU10-Glass-RGBCW",
+        "product_id": "uwc1evbcqurkifog",
+        "biz_type": 0,
+        "model": "mennew",
+        "sub": false,
+        "icon": "https://images.tuyaeu.com/smart/icon/ay1541056239985fDGjj/f84e2c8edb72154aa7f62ae3d9cf7b1a.png"
+    },
+    {
+        "name": "Bed",
+        "id": "bfd111cb86bdaa06121ni6",
+        "key": "c168a6a50bb19041",
+        "mac": "84:e3:42:e2:35:30",
+        "category": "dj",
+        "product_name": "A60 RGB-CCT ",
+        "product_id": "gkuracrq5biwualf",
+        "biz_type": 0,
+        "model": "manew",
+        "sub": false,
+        "icon": "https://images.tuyaeu.com/smart/icon/ay1513094230318rZgE5/6136151663893a8fd41aac170668fa0d.png"
+    },
+    {
+        "name": "Aquarium",
+        "id": "bf9d6b7398db79bfcd8atz",
+        "key": "43179a68169ee53c",
+        "mac": "84:e3:42:e2:52:2a",
+        "category": "dj",
+        "product_name": "A60 RGB-CCT ",
+        "product_id": "gkuracrq5biwualf",
+        "biz_type": 0,
+        "model": "manew",
+        "sub": false,
+        "icon": "https://images.tuyaeu.com/smart/icon/ay1513094230318rZgE5/6136151663893a8fd41aac170668fa0d.png"
+    }
+]
