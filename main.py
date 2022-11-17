@@ -146,7 +146,7 @@ class requestHandler(BaseHTTPRequestHandler):
                 self.send_response(406)
 
     def do_GET(self):
-        if self.path == 'light/stop':
+        if self.path == '/light/stop':
             global runningSunrise
             runningSunrise = False
             self.send_response(200)
