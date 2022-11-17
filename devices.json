@@ -1,8 +1,21 @@
 [
     {
+        "name": "Spot1",
+        "id": "bf26704e6b7bf91f5brgjf",
+        "key": "38da5b10e4931137",
+        "mac": "84:e3:42:e9:35:db",
+        "category": "dj",
+        "product_name": "LSC GU10-Glass-RGBCW",
+        "product_id": "uwc1evbcqurkifog",
+        "biz_type": 0,
+        "model": "mennew",
+        "sub": false,
+        "icon": "https://images.tuyaeu.com/smart/icon/ay1541056239985fDGjj/f84e2c8edb72154aa7f62ae3d9cf7b1a.png"
+    },
+    {
         "name": "Spot2",
         "id": "bf1b45b6f29f5bd4d1t4tg",
-        "key": "1749cb5be5a5ae46",
+        "key": "01da56820582a042",
         "mac": "84:e3:42:34:bc:60",
         "category": "dj",
         "product_name": "LSC GU10-Glass-RGBCW",
@@ -15,21 +28,8 @@
     {
         "name": "Spot3",
         "id": "bfc03b993301f4a1d2pxje",
-        "key": "ae0e0692ed4635fc",
+        "key": "6031f2248efb8b4e",
         "mac": "70:89:76:8e:99:2c",
-        "category": "dj",
-        "product_name": "LSC GU10-Glass-RGBCW",
-        "product_id": "uwc1evbcqurkifog",
-        "biz_type": 0,
-        "model": "mennew",
-        "sub": false,
-        "icon": "https://images.tuyaeu.com/smart/icon/ay1541056239985fDGjj/f84e2c8edb72154aa7f62ae3d9cf7b1a.png"
-    },
-    {
-        "name": "Spot1",
-        "id": "bf26704e6b7bf91f5brgjf",
-        "key": "e589342193d4c6fc",
-        "mac": "84:e3:42:e9:35:db",
         "category": "dj",
         "product_name": "LSC GU10-Glass-RGBCW",
         "product_id": "uwc1evbcqurkifog",

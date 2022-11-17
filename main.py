@@ -6,65 +6,149 @@
 # 192.168.2.21 - bfc03b993301f4a1d2pxje
 # 192.168.2.19 - bf26704e6b7bf91f5brgjf
 # 192.168.2.20 - bf1b45b6f29f5bd4d1t4tg
+import threading
+from http.server import HTTPServer, BaseHTTPRequestHandler
+import json
+import datetime
+import tinytuya as tinytuya
 import time
 
-import tinytuya as tinytuya
+runningSunrise = False
 
-spot1 = tinytuya.BulbDevice("bfc03b993301f4a1d2pxje", "192.168.2.21", "ae0e0692ed4635fc")
-spot2 = tinytuya.BulbDevice("bf26704e6b7bf91f5brgjf", "192.168.2.19", "e589342193d4c6fc")
-spot3 = tinytuya.BulbDevice("bf1b45b6f29f5bd4d1t4tg", "192.168.2.20", "1749cb5be5a5ae46")
+spot1 = tinytuya.BulbDevice("bfc03b993301f4a1d2pxje", "192.168.2.14", "6031f2248efb8b4e")
+spot2 = tinytuya.BulbDevice("bf26704e6b7bf91f5brgjf", "192.168.2.17", "38da5b10e4931137")
+spot3 = tinytuya.BulbDevice("bf1b45b6f29f5bd4d1t4tg", "192.168.2.16", "01da56820582a042")
 
-def wakeupLoop(spotList):
-    print("started the loop.")
-    startHue = 0.0
-    startSat = 1.0
-    brightness = 0.01
-    counter = 0
-    for spot in spotList:
-        # spot.set_brightness(25, False)
-        spot.set_hsv(startHue, 1.0, brightness, False)
-        spot.turn_on(False)
-        print(spot)
+# the time at which the sunrise should start. This time will be modified by the http handler in order to change the
+# schedule and it will be read by the wakeupLoop thread in order to start at the correct time.
+sunriseTime = datetime.time(hour=7, minute=0)
 
-    time.sleep(10)
-    while startHue < 0.10:
-        for spot in spotList:
-            spot.set_hsv(startHue, 1.0, brightness, False)
-            # spot.set_brightness(brightness, False)
-        startHue += 0.001
-        counter += 1
-        brightness += 0.01
-        print("hue: " + str(startHue) + ", brightness: " + str(brightness))
-        time.sleep(2)
-    # Transition to white by decreasing saturation
-    print("transitioning to white")
-    while startSat > 0.6:
-        for spot in spotList:
-            spot.set_hsv(startHue, startSat, brightness, False)
-            startSat -= 0.01
-            print("startSat: " + str(round(startSat, 2)))
+def time_plus(time, timedelta):
+    start = datetime.datetime(
+        2000, 1, 1,
+        hour=time.hour, minute=time.minute, second=time.second)
+    end = start + timedelta
+    return end.time()
+
+def wakeupLoop(threadName, spotList):
+    global runningSunrise
+    while True:
+        print("=== sunrise thread: time set for ", str(sunriseTime))
+        print(datetime.datetime.now().time())
+        if sunriseTime >= datetime.datetime.now().time():
+            print("first condition holds")
+        if not datetime.datetime.now().time() > time_plus(sunriseTime, datetime.timedelta(minutes=5)):
+            print("second condition holds")
+        if sunriseTime >= datetime.datetime.now().time() and not datetime.datetime.now().time() > time_plus(sunriseTime, datetime.timedelta(minutes=5)):
+            runningSunrise = True
+            print("started the loop.")
+            startHue = 0.0
+            startSat = 1.0
+            brightness = 0.01
+            counter = 0
+            for spot in spotList:
+                # spot.set_brightness(25, False)
+                spot.set_hsv(startHue, 1.0, brightness, False)
+                spot.turn_on(False)
+                print(spot)
+
+            time.sleep(10)
+            while startHue < 0.10 and runningSunrise:
+                for spot in spotList:
+                    spot.set_hsv(startHue, 1.0, brightness, False)
+                    # spot.set_brightness(brightness, False)
+                startHue += 0.001
+                counter += 1
+                brightness += 0.01
+                print("hue: " + str(startHue) + ", brightness: " + str(brightness))
+                time.sleep(2)
+            # Transition to white by decreasing saturation
+            print("transitioning to white")
+            while startSat > 0.6 and runningSunrise:
+                for spot in spotList:
+                    spot.set_hsv(startHue, startSat, brightness, False)
+                    startSat -= 0.01
+                    print("startSat: " + str(round(startSat, 2)))
+                    time.sleep(2)
+
+            print("color gradient done, switching to white")
             time.sleep(2)
+            brightness = 10
+            temperature = 10
+            spot3.set_colour(255, 180, 0, False)
+            spot3.set_brightness(1000, False)
+            for spot in spotList[0:2]:
+                spot.set_white(brightness, temperature, False)
+            print("done with setting white, incrementing now")
+            while brightness < 800 and runningSunrise:
+                for spot in spotList[0:2]:
+                    spot.set_white(brightness, temperature, False)
+                    brightness += 1
+                    temperature = round(brightness / 4)
+                    print("temp: " + str(temperature) + ", brightness: " + str(brightness))
+                    time.sleep(2)
+            print("done with sunrise!")
+            time.sleep(600)
+            spot1.turn_off()
+            spot2.turn_off()
+            spot3.turn_off()
+        else:
+            # sleep 5 seconds to be a lit less computation intensive
+            time.sleep(5)
 
-    print("color gradient done, switching to white")
-    time.sleep(2)
-    brightness = 10
-    temperature = 10
-    spot3.set_colour(255, 180, 0, False)
-    spot3.set_brightness(1000, False)
-    for spot in spotList[0:2]:
-        spot.set_white(brightness, temperature, False)
-    print("done with setting white, incrementing now")
-    while brightness < 800:
-        for spot in spotList[0:2]:
-            spot.set_white(brightness, temperature, False)
-            brightness += 1
-            temperature = round(brightness / 4)
-            print("temp: " + str(temperature) + ", brightness: " + str(brightness))
-            time.sleep(2)
-    print("done with sunrise!")
+
+def parseTime(time_):
+    timeString = str(time_)
+    if len(timeString) == 3:
+        hours = timeString[0]
+        minutes = timeString[1] + timeString[2]
+        if int(hours) > 23:
+            print("error")
+            return datetime.datetime.now(), False
+        if int(minutes) > 59:
+            print("error")
+            return datetime.datetime.now(), False
+        print("hour: ", hours)
+        print("minute: ", minutes)
+        return datetime.time(hour=int(hours), minute=int(minutes)), True
+    elif len(timeString) == 4:
+        hours = timeString[0] + timeString[1]
+        minutes = timeString[2] + timeString[3]
+        if int(hours) > 23:
+            print("error")
+            return datetime.datetime.now(), False
+        if int(int(minutes) > 59):
+            print("error")
+            return datetime.datetime.now(), False
+        print("hour: ", hours)
+        print("minute: ", minutes)
+        return datetime.time(hour=int(hours), minute=int(minutes)), True
+    else:
+        return datetime.datetime.now(), False
 
 
-# Press the green button in the gutter to run the script.
+class requestHandler(BaseHTTPRequestHandler):
+    def do_POST(self):
+        if self.path == '/light/':
+            content_length = int(self.headers['content-length'])
+            body = self.rfile.read(content_length)
+            self.send_response(200)
+            self.end_headers()
+
+            json_ = body.decode('utf-8').replace("'", '"')
+            data = json.loads(json_)
+            s = json.dumps(data, indent=4, sort_keys=True)
+            print(s)
+            parsedTime = parseTime(data["time"])
+            if parsedTime[1]:
+#               we received a valid time, so now set the sunrisetime.
+                global sunriseTime
+                sunriseTime = parsedTime[0]
+                self.send_response(200)
+            else:
+                self.send_response(406)
+
+
 if __name__ == '__main__':
     spotList = [spot1, spot2, spot3]
 
@@ -75,23 +159,19 @@ if __name__ == '__main__':
         spot.set_socketRetryLimit(3)
         spot.set_socketTimeout(5)
 
-    spot1.turn_off(False)
-    spot2.turn_off(False)
-    spot3.turn_off(False)
-    print("spots off waiting 5 seconds before starting the loop. ")
-    time.sleep(5)
+    spot1.turn_on(False)
+    spot2.turn_on(False)
+    spot3.turn_on(False)
+    print("serving!")
 
-    wakeupLoop([spot1, spot2, spot3])
 
-    # spot1.set_hsv(0.5, 1.0, 1.0, False)
-    # spot2.set_hsv(1, 1, 1)
-    # spot3.set_hsv(1, 1, 1)
-    # print("done setting hsv")
-    #
-    # print("spot 1 hsv is ")
-    # print(spot1.colour_hsv())
 
-    time.sleep(5)
-    spot1.turn_off()
-    spot2.turn_off()
-    spot3.turn_off()
+    print("HTTP server started...")
+    sunriseThread = threading.Thread(target=wakeupLoop, args=("wakeupLoop", spotList,))
+    sunriseThread.start()
+    print("sunrise thread started!")
+
+    httpd = HTTPServer(('192.168.2.11', 2000), requestHandler)
+    httpd.serve_forever()
+
+    # wakeupLoop([spot1, spot2, spot3])
