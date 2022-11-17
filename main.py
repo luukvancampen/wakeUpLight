@@ -13,7 +13,7 @@ import datetime
 import tinytuya as tinytuya
 import time
 
-runningSunrise = False
+runningSunrise = True
 
 spot1 = tinytuya.BulbDevice("bfc03b993301f4a1d2pxje", "192.168.2.14", "6031f2248efb8b4e")
 spot2 = tinytuya.BulbDevice("bf26704e6b7bf91f5brgjf", "192.168.2.17", "38da5b10e4931137")
@@ -33,14 +33,7 @@ def time_plus(time, timedelta):
 def wakeupLoop(threadName, spotList):
     global runningSunrise
     while True:
-        print("=== sunrise thread: time set for ", str(sunriseTime))
-        print(datetime.datetime.now().time())
-        if sunriseTime >= datetime.datetime.now().time():
-            print("first condition holds")
-        if not datetime.datetime.now().time() > time_plus(sunriseTime, datetime.timedelta(minutes=5)):
-            print("second condition holds")
-        if sunriseTime >= datetime.datetime.now().time() and not datetime.datetime.now().time() > time_plus(sunriseTime, datetime.timedelta(minutes=5)):
-            runningSunrise = True
+        if sunriseTime >= datetime.datetime.now().time() and not datetime.datetime.now().time() > time_plus(sunriseTime, datetime.timedelta(minutes=5)) and runningSunrise:
             print("started the loop.")
             startHue = 0.0
             startSat = 1.0
@@ -72,14 +65,15 @@ def wakeupLoop(threadName, spotList):
                     time.sleep(2)
 
             print("color gradient done, switching to white")
-            time.sleep(2)
-            brightness = 10
-            temperature = 10
-            spot3.set_colour(255, 180, 0, False)
-            spot3.set_brightness(1000, False)
-            for spot in spotList[0:2]:
-                spot.set_white(brightness, temperature, False)
-            print("done with setting white, incrementing now")
+            if runningSunrise:
+                time.sleep(2)
+                brightness = 10
+                temperature = 10
+                spot3.set_colour(255, 180, 0, False)
+                spot3.set_brightness(1000, False)
+                for spot in spotList[0:2]:
+                    spot.set_white(brightness, temperature, False)
+                print("done with setting white, incrementing now")
             while brightness < 800 and runningSunrise:
                 for spot in spotList[0:2]:
                     spot.set_white(brightness, temperature, False)
@@ -88,7 +82,8 @@ def wakeupLoop(threadName, spotList):
                     print("temp: " + str(temperature) + ", brightness: " + str(brightness))
                     time.sleep(2)
             print("done with sunrise!")
-            time.sleep(600)
+            if runningSunrise:
+                time.sleep(600)
             spot1.turn_off()
             spot2.turn_off()
             spot3.turn_off()
@@ -143,11 +138,18 @@ class requestHandler(BaseHTTPRequestHandler):
             if parsedTime[1]:
 #               we received a valid time, so now set the sunrisetime.
                 global sunriseTime
+                global runningSunrise
                 sunriseTime = parsedTime[0]
+                runningSunrise = True
                 self.send_response(200)
             else:
                 self.send_response(406)
 
+    def do_GET(self):
+        if self.path == 'light/stop':
+            global runningSunrise
+            runningSunrise = False
+            self.send_response(200)
 
 if __name__ == '__main__':
     spotList = [spot1, spot2, spot3]
