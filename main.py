@@ -171,7 +171,7 @@ if __name__ == '__main__':
     sunriseThread.start()
     print("sunrise thread started!")
 
-    httpd = HTTPServer(('192.168.2.11', 2000), requestHandler)
+    httpd = HTTPServer(('192.168.2.12', 2000), requestHandler)
     httpd.serve_forever()
 
     # wakeupLoop([spot1, spot2, spot3])
