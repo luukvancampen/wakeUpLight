@@ -161,9 +161,9 @@ if __name__ == '__main__':
         spot.set_socketRetryLimit(3)
         spot.set_socketTimeout(5)
 
-    spot1.turn_on(False)
-    spot2.turn_on(False)
-    spot3.turn_on(False)
+    spot1.turn_off(False)
+    spot2.turn_off(False)
+    spot3.turn_off(False)
     print("serving!")
 
 
