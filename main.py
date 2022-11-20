@@ -150,8 +150,8 @@ class requestHandler(BaseHTTPRequestHandler):
 
 
     def do_GET(self):
+        global runningSunrise
         if self.path == '/light/stop':
-            global runningSunrise
             runningSunrise = False
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
