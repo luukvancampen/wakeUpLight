@@ -125,6 +125,17 @@ def subtractHalfHour(time_):
         newHour = time_.hour
     return datetime.time(hour=newHour, minute=newMinute)
 
+def addHalfHour(time_):
+    newMinute = 0
+    newHour = 1
+    if time_.minute + 30 > 59:
+        newHour = time_.hour + 1
+        newMinute = time_.minute + 30 - 60
+    else:
+        newHour = time_.hour
+        newMinute = time_.minute + 30
+    return datetime.time(hour=newHour, minute=newMinute)
+
 class requestHandler(BaseHTTPRequestHandler):
     def do_POST(self):
         if self.path == '/light/':
@@ -165,10 +176,11 @@ class requestHandler(BaseHTTPRequestHandler):
                 self.send_response(200)
             else:
                 global sunriseTime
-                replySunriseMinutes = str(sunriseTime.minute)
-                if sunriseTime.minute == 0:
+                wakeUpTime = addHalfHour(sunriseTime)
+                replySunriseMinutes = str(wakeUpTime.minute)
+                if wakeUpTime.minute == 0:
                     replySunriseMinutes = "00"
-                reply = str(sunriseTime.hour) + ":" + replySunriseMinutes
+                reply = str(wakeUpTime.hour) + ":" + replySunriseMinutes
                 self.send_header('Content-Type', 'application/json')
                 self.end_headers()
                 self.wfile.write(bytes(json.dumps({'time': reply}), 'UTF-8'))
