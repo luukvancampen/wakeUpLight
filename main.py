@@ -33,7 +33,7 @@ def time_plus(time, timedelta):
 def wakeupLoop(threadName, spotList):
     global runningSunrise
     while True:
-        if sunriseTime >= datetime.datetime.now().time() and not datetime.datetime.now().time() < time_plus(sunriseTime, datetime.timedelta(minutes=5)) and runningSunrise:
+        if sunriseTime < datetime.datetime.now().time() < time_plus(sunriseTime, datetime.timedelta(minutes=5)) and runningSunrise:
             print("started the loop.")
             startHue = 0.0
             startSat = 1.0
