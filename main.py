@@ -158,7 +158,6 @@ class requestHandler(BaseHTTPRequestHandler):
             self.wfile.write(b'Light off!')
             self.send_response(200)
         if self.path == '/light/gettime':
-            global runningSunrise
             if not runningSunrise:
                 self.send_header('Content-type', 'text/plain')
                 self.end_headers()
