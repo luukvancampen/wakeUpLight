@@ -147,14 +147,31 @@ class requestHandler(BaseHTTPRequestHandler):
                 self.send_response(200)
             else:
                 self.send_response(406)
-                self.end_headers()
-                self.wfile.write(b'Light off!')
+
 
     def do_GET(self):
         if self.path == '/light/stop':
             global runningSunrise
             runningSunrise = False
+            self.send_header('Content-type', 'text/plain')
+            self.end_headers()
+            self.wfile.write(b'Light off!')
             self.send_response(200)
+        if self.path == '/light/gettime':
+            global runningSunrise
+            if not runningSunrise:
+                self.send_header('Content-type', 'text/plain')
+                self.end_headers()
+                self.wfile.write(b'No time set!')
+                self.send_response(200)
+            else:
+                global sunriseTime
+                reply = "Wakker worden om " + str(sunriseTime.hour) + ":" + str(sunriseTime.minute) + "."
+                self.send_header('Content-type', 'text/plain')
+                self.end_headers()
+                self.wfile.write(bytes(reply, 'UTF-8'))
+                self.send_response(200)
+
 
 if __name__ == '__main__':
     spotList = [spot1, spot2, spot3]
