@@ -166,7 +166,7 @@ class requestHandler(BaseHTTPRequestHandler):
             else:
                 global sunriseTime
                 reply = str(sunriseTime.hour) + ":" + str(sunriseTime.minute)
-                self.send_header('Content-Type', 'application/json')
+                # self.send_header('Content-Type', 'application/json')
                 self.end_headers()
                 self.wfile.write(bytes(json.dumps({'time': reply}), 'UTF-8'))
                 self.send_response(200)
