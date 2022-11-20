@@ -33,7 +33,7 @@ def time_plus(time, timedelta):
 def wakeupLoop(threadName, spotList):
     global runningSunrise
     while True:
-        if sunriseTime >= datetime.datetime.now().time() and not datetime.datetime.now().time() > time_plus(sunriseTime, datetime.timedelta(minutes=5)) and runningSunrise:
+        if sunriseTime >= datetime.datetime.now().time() and not datetime.datetime.now().time() < time_plus(sunriseTime, datetime.timedelta(minutes=5)) and runningSunrise:
             print("started the loop.")
             startHue = 0.0
             startSat = 1.0
@@ -54,7 +54,7 @@ def wakeupLoop(threadName, spotList):
                 counter += 1
                 brightness += 0.01
                 print("hue: " + str(startHue) + ", brightness: " + str(brightness))
-                time.sleep(2)
+                time.sleep(6)
             # Transition to white by decreasing saturation
             print("transitioning to white")
             while startSat > 0.6 and runningSunrise:
@@ -62,7 +62,7 @@ def wakeupLoop(threadName, spotList):
                     spot.set_hsv(startHue, startSat, brightness, False)
                     startSat -= 0.01
                     print("startSat: " + str(round(startSat, 2)))
-                    time.sleep(2)
+                    time.sleep(6)
 
             print("color gradient done, switching to white")
             if runningSunrise:
@@ -80,7 +80,7 @@ def wakeupLoop(threadName, spotList):
                     brightness += 1
                     temperature = round(brightness / 4)
                     print("temp: " + str(temperature) + ", brightness: " + str(brightness))
-                    time.sleep(2)
+                    time.sleep(1)
             print("done with sunrise!")
             if runningSunrise:
                 time.sleep(600)
@@ -98,29 +98,32 @@ def parseTime(time_):
         hours = timeString[0]
         minutes = timeString[1] + timeString[2]
         if int(hours) > 23:
-            print("error")
             return datetime.datetime.now(), False
         if int(minutes) > 59:
-            print("error")
             return datetime.datetime.now(), False
-        print("hour: ", hours)
-        print("minute: ", minutes)
         return datetime.time(hour=int(hours), minute=int(minutes)), True
     elif len(timeString) == 4:
         hours = timeString[0] + timeString[1]
         minutes = timeString[2] + timeString[3]
         if int(hours) > 23:
-            print("error")
             return datetime.datetime.now(), False
         if int(int(minutes) > 59):
-            print("error")
             return datetime.datetime.now(), False
-        print("hour: ", hours)
-        print("minute: ", minutes)
         return datetime.time(hour=int(hours), minute=int(minutes)), True
     else:
         return datetime.datetime.now(), False
 
+
+def subtractHalfHour(time_):
+    newMinute = 0
+    newHour = 1
+    if time_.minute - 30 < 0:
+        newHour = time_.hour - 1
+        newMinute = 60 + (time_.minute - 30)
+    else:
+        newMinute = time_.minute - 30
+        newHour = time_.hour
+    return datetime.time(hour=newHour, minute=newMinute)
 
 class requestHandler(BaseHTTPRequestHandler):
     def do_POST(self):
@@ -139,11 +142,13 @@ class requestHandler(BaseHTTPRequestHandler):
 #               we received a valid time, so now set the sunrisetime.
                 global sunriseTime
                 global runningSunrise
-                sunriseTime = parsedTime[0]
+                sunriseTime = subtractHalfHour(parsedTime[0])
                 runningSunrise = True
                 self.send_response(200)
             else:
                 self.send_response(406)
+                self.end_headers()
+                self.wfile.write(b'Light off!')
 
     def do_GET(self):
         if self.path == '/light/stop':
