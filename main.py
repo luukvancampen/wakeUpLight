@@ -34,6 +34,7 @@ def wakeupLoop(threadName, spotList):
     global runningSunrise
     while True:
         if sunriseTime < datetime.datetime.now().time() < time_plus(sunriseTime, datetime.timedelta(minutes=5)) and runningSunrise:
+
             print("started the loop.")
             startHue = 0.0
             startSat = 1.0
@@ -89,6 +90,8 @@ def wakeupLoop(threadName, spotList):
             spot3.turn_off()
         else:
             # sleep 5 seconds to be a lit less computation intensive
+            for spot in spotList:
+                spot.turn_off()
             time.sleep(5)
 
 
